@@ -7,7 +7,7 @@ public interface CarService {
 
     void deleteById(int id);
 
-    CarEntity saveCar(Car carRequest);
+    Car saveCar(Car carRequest);
 
-    CarEntity updateById(Integer id, Car carRequest);
+    Car updateById(Integer id, Car carRequest);
 }

@@ -43,10 +43,10 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public CarEntity saveCar(Car carRequest) {
+    public Car saveCar(Car carRequest) {
         try{
             CarEntity carEntity = carConverter.toEntity(carRequest);
-            return carRepository.save(carEntity);
+            return carConverter.toCar(carRepository.save(carEntity));
         } catch (IllegalArgumentException e){
             throw new IllegalArgumentException();
         }
@@ -58,12 +58,12 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public CarEntity updateById(Integer id, Car carRequest) {
+    public Car updateById(Integer id, Car carRequest) {
 
             CarEntity carEntity = carRepository.findById(id).orElseThrow(NoSuchElementException::new);
             CarEntity carModified = carConverter.toEntity(carRequest);
             carModified.setId(id);
-            return carRepository.save(carModified);
+            return carConverter.toCar(carRepository.save(carModified));
 
     }
 }
