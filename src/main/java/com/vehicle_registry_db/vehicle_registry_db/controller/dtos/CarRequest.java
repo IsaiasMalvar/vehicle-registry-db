@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class CarRequest {
-    private int id;
 
     private String brand;
 
